@@ -1,4 +1,4 @@
-GIT FLOW IMPLEMENTATION
+# GIT FLOW IMPLEMENTATION
 This project aim to test the usecase of having an existing projet where we implement GitFlow.  
 Checking if it is possible and to what extend or not.  
 NB: currently using a mac so some command such as "touch" are different
