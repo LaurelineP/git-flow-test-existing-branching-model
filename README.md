@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GIT FLOW IMPLEMENTATION
+This project aim to test the usecase of having an existing projet where we implement GitFlow.  
+Checking if it is possible and to what extend or not.  
+NB: currently using a mac so some command such as "touch" are different
 
-## Available Scripts
 
-In the project directory, you can run:
+* Test: exisiting repository
+In order to apply GitFlow in an existing project having git initiated ( no existing code versionning ).  
+on the project I choose to get a whole boilerplate including the git initialisation  
+using create-react-app boilerplate generating a first commit on a branch master  
+	* To Test: existing project with existing version control ( result from "git init")  
+		> 	npx create-react-app git-flow-test-existing-branching-model  
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+	* To Test: how GitFlow handles existing local branch having a similar branch nomination pattern  
+	than the the one from gitFlow ( ex: master )  
+	Creating a first modification by creating a file + make change ( on master )  
+		> touch text.md && nano text.md ( interaction system to write into the file from terminal )  
+		> gaa ( git add * alias ) && git commit -m 'Init text.md file'  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+	* To Test: how would react GitFlow when the existing project has a similar sub branch nomination pattern  
+	( ex: feature/plop )  
+	Simulating an existing "develop" branch in order to check how gitFlow handles existing branch using  
+	it's branching nomination pattern:  
+		* create a branch local develop from master called "develop/plop"
+		* create a file to handles versionning differences to stage
+		* staging files and commit
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+		> git checkout master && git checkout -b develop/plop
+		> touch plop.txt && nano plop.txt ( add some txt )
+		> gaa && git commit -m ' test feature/plop recognization from gitflow'
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	* To Test: how GitFlow handles branches with no nomination pattern
+		* get back to master and create new branch
+		* create a file to handles versionning differences to stage
+		* staging files and commit
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+		> git checkout master && git checkout -b no-nomination-pattern
+		> touch randomText.txt
+		> gaa && git commit -m 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	* To Test: how GitFlow handles exisiting remote project having those branches
+		* set remote repository since we just created this emulating "existing project"
+		* push branches to save them on remote repository ( no merge ) [ master, develop/plop && no-nomination-pattern ]
+		> git remote add origin https://github.com/LaurelineP/git-flow-test-existing-branching-model.git
+		> git push --set-upstream origin master
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
