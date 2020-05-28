@@ -1,0 +1,2 @@
+Plop text on branch called "feature/plop" - checking if git flow will recognize "feature" to apply to its system
+
